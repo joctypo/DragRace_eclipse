@@ -5,8 +5,8 @@ import processing.core.PImage;
 
 public class DragRosa extends Drags {
 
-	public DragRosa(PImage imagendrag, String accion, int posx, int posy, PApplet app) {
-		super(imagendrag, accion, posx, posy, app);
+	public DragRosa(PImage imagendrag, String accion, int posx, int posy,float i,float j, PApplet app) {
+		super(imagendrag, accion, posx, posy,i,j, app);
 		
 	}
 

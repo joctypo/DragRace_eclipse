@@ -14,7 +14,9 @@ public class Main extends PApplet{
 	PImage inicio02;
 	PImage instrucciones;
 	PImage imgMapa;
-	
+	PImage dora,rosa,ropa1,ropa2,peluca1,peluca2,makeup1,makeup2;
+	PImage doraropa,rosaropa,dorapelu,rosapelu,doramake,rosamake;
+	private int pomay,pomax;
 	private int posX = 70, posY=140;
 	
 	
@@ -28,15 +30,15 @@ public class Main extends PApplet{
 			{0,0 ,1,0,1,0,1,0,1,0,1 ,0,0,0,0,0,0,0,0,0,0,0,0 ,1,0,1,0,1,0,1,0,1 ,0,0},//6
 			{0,0 ,1,0,1,0,1,0,1,0,1 ,0,0,0,0,0,0,0,0,0,0,0,0 ,1,0,1,0,1,0,1,0,1 ,0,0},//7
 			{0,0 ,1,0,1,0,1,0,1,0,1 ,0,0,0,0,0,0,0,0,0,0,0,0 ,1,0,1,0,1,0,1,0,1 ,0,0},//8
-			{0,0 ,1,0,1,0,1,0,1,0,1 ,0,0,0,0,0,0,0,0,0,0,0,0 ,1,0,1,0,1,0,1,0,1 ,0,0},//9
+			{0,0 ,1,0,1,0,1,0,1,0,2 ,0,0,0,0,0,0,0,0,0,0,0,0 ,1,0,1,0,1,0,1,0,2 ,0,0},//9
 			{0,0 ,0,0,1,0,1,0,1,0,0 ,0,0,0,0,0,0,0,0,0,0,0,0 ,0,0,1,0,1,0,1,0,0 ,0,0},//10
 			{0,0 ,1,0,1,0,1,0,1,0,1 ,0,0,0,0,0,0,0,0,0,0,0,0 ,1,0,1,0,1,0,1,0,1 ,0,0},//11
-			{0,0 ,1,0,1,0,1,0,1,0,1 ,0,0,0,0,0,0,0,0,0,0,0,0 ,1,0,1,0,1,0,1,0,1 ,0,0},//12
+			{0,0 ,2,0,1,0,1,0,1,0,1 ,0,0,0,0,0,0,0,0,0,0,0,0 ,2,0,1,0,1,0,1,0,1 ,0,0},//12
 			{0,0 ,1,1,1,0,1,1,1,0,1 ,0,0,0,0,0,0,0,0,0,0,0,0 ,1,1,1,0,1,1,1,0,1 ,0,0},//13
 			{0,0 ,0,0,0,0,1,0,0,0,1 ,0,0,0,0,0,0,0,0,0,0,0,0 ,0,0,0,0,1,0,0,0,1 ,0,0},//14
 			{0,0 ,1,1,1,1,1,1,1,1,1 ,0,0,0,0,0,0,0,0,0,0,0,0 ,1,1,1,1,1,1,1,1,1 ,0,0},//15
 			{0,0 ,1,0,1,0,1,0,0,0,1 ,0,0,0,0,0,0,0,0,0,0,0,0 ,1,0,1,0,1,0,0,0,1 ,0,0},//16
-			{0,0 ,0,0,1,0,1,0,1,0,1 ,0,0,0,0,0,0,0,0,0,0,0,0 ,0,0,1,0,1,0,1,0,1 ,0,0},//17
+			{0,0 ,0,0,1,0,1,0,2,0,1 ,0,0,0,0,0,0,0,0,0,0,0,0 ,0,0,1,0,1,0,2,0,1 ,0,0},//17
 			{0,0 ,4,1,1,0,1,0,1,1,1 ,0,0,0,0,0,0,0,0,0,0,0,0 ,4,1,1,0,1,0,1,1,1 ,0,0},//18
 			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},//19
 			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},//20
@@ -66,6 +68,7 @@ public class Main extends PApplet{
     	//Aquí se declara la nueva linkedlist 
     	dragas= new LinkedList<Drags>();
     	
+
     	
     	//Aquí se llama el TCP del segundo cliente 
     	conectado2 = new TCPConnection2();
@@ -77,10 +80,26 @@ public class Main extends PApplet{
     	inicio02 = loadImage("imagenes/pantalla1-2.png");
     	instrucciones = loadImage("imagenes/instrucciones.png");
     	imgMapa = loadImage("imagenes/mapa.png");
-
+    	dora = loadImage("imagenes/dora.png");
+    	rosa = loadImage("imagenes/rosa.png");
+    	doramake = loadImage("imagenes/doramake.png");
+    	rosamake = loadImage("imagenes/rosamake.png");
+    	doraropa = loadImage("imagenes/doraropa.png");
+    	rosaropa = loadImage("imagenes/rosaropa.png");
+    	dorapelu = loadImage("imagenes/pelucadora.png");
+    	rosapelu = loadImage("imagenes/pelucarosa.png");
+    	ropa1 = loadImage("imagenes/doritaropa.png");
+    	peluca1 = loadImage("imagenes/doritapelu.png");
+    	makeup1 = loadImage("imagenes/doritaropa.png");
+    	ropa2 = loadImage("imagenes/rositaropa.png");
+    	peluca2 = loadImage("imagenes/rositaropa.png");
+    	makeup2 = loadImage("imagenes/rositamake.png");
+    	
     	//Mientras inicia en 3 para poder empezar en el juego, toca cambiarlo a 1
     	pantalla=1;
     	
+    	dragas.add(new DragDebora(dora, "nada ",17, 2, 70,595, this));
+    	dragas.add(new DragRosa(rosa, "nada ",17, 23,810,595, this));
     
 
     }
@@ -115,7 +134,18 @@ public class Main extends PApplet{
     		
     		// Pantalla de juego 
     		image(imgMapa,0,0);
-    		ellipse(posX+15,posY+15,15,15);
+    		image(ropa1,0,0);
+    		image(peluca1,0,0);
+    		image(makeup1,0,0);
+    		image(ropa2,0,0);
+    		image(peluca2,0,0);
+    		image(makeup2,0,0);
+    		dragas.get(0).pintarimagen();
+    		dragas.get(1).pintarimagen();
+    		//ellipse(posX+15,posY+15,15,15);
+    		fill(0);
+			textSize(10);
+			text("X: " + mouseX + " Y " + mouseY, mouseX, mouseY);
     		
     		break;
     	
@@ -150,6 +180,8 @@ public class Main extends PApplet{
     	
     }
     
+    
+    
 	public void acciono(Acciones acc, Object obj) {
 		
 		//Verificar que clase es o que TCP mando la info 
@@ -162,8 +194,12 @@ public class Main extends PApplet{
 			switch(acc.getAccion()) {
 			
 			case "UPSTART":
-				dragas.get(0).arribamuevalo();
+				pomax= dragas.get(0).getPosx();
+				pomay= dragas.get(0).getPosy();
 				
+				if(mapa[pomay-1][pomax]==1 || mapa[pomay-1][pomax]==2) {
+				dragas.get(0).arribamuevalo();
+				}
 				break;
 			
 			case "UPSTOP":
@@ -173,9 +209,12 @@ public class Main extends PApplet{
 				break;
 				
 			case "DOWNSTART":
+				pomax= dragas.get(0).getPosx();
+				pomay= dragas.get(0).getPosy();
 				
+				if(mapa[pomay+1][pomax]==1 || mapa[pomay+1][pomax]==2) {
 				dragas.get(0).abajomuevalo();
-				
+				}
 				break;
 				
 			
@@ -187,9 +226,12 @@ public class Main extends PApplet{
 			
 				
 			case "LEFTSTART":
+				pomax= dragas.get(0).getPosx();
+				pomay= dragas.get(0).getPosy();
 				
+				if(mapa[pomay][pomax+1]==1 || mapa[pomay][pomax+1]==2) {
 				dragas.get(0).izquierdomuevalo();
-				
+				}
 				break;
 			
 			case "LEFTSTOP":
@@ -200,9 +242,12 @@ public class Main extends PApplet{
 				
 				
 			case "RIGHTSTART":
+				pomax= dragas.get(0).getPosx();
+				pomay= dragas.get(0).getPosy();
 				
+				if(mapa[pomay][pomax+1]==1 || mapa[pomay][pomax+1]==2) {
 				dragas.get(0).derechomuevalo();
-				
+				}
 				break;
 			
 			case "RIGHTSTOP":
@@ -212,8 +257,13 @@ public class Main extends PApplet{
 				break;
 			case "CATCHIT":
 				
+				pomax= dragas.get(0).getPosx();
+				pomay= dragas.get(0).getPosy();
 				
-				
+				if(mapa[pomay][pomax+1]==2) {
+					
+					
+				}
 				break;
 			
 			}
@@ -227,9 +277,12 @@ public class Main extends PApplet{
 			switch(acc.getAccion()) {
 			
 			case "UPSTART":
+				pomax= dragas.get(1).getPosx();
+				pomay= dragas.get(1).getPosy();
 				
+				if(mapa[pomay-1][pomax]==1 || mapa[pomay-1][pomax]==2) {
 				dragas.get(1).arribamuevalo();
-				
+				}
 				break;
 			
 			case "UPSTOP":
@@ -239,9 +292,12 @@ public class Main extends PApplet{
 				break;
 				
 			case "DOWNSTART":
+				pomax= dragas.get(1).getPosx();
+				pomay= dragas.get(1).getPosy();
 				
+				if(mapa[pomay+1][pomax]==1 || mapa[pomay+1][pomax]==2) {
 				dragas.get(1).abajomuevalo();
-				
+				}
 				break;
 				
 			
@@ -253,9 +309,12 @@ public class Main extends PApplet{
 			
 				
 			case "LEFTSTART":
+				pomax= dragas.get(1).getPosx();
+				pomay= dragas.get(1).getPosy();
 				
+				if(mapa[pomay][pomax+1]==1 || mapa[pomay][pomax+1]==2) {
 				dragas.get(1).izquierdomuevalo();
-				
+				}
 				break;
 			
 			case "LEFTSTOP":
@@ -266,9 +325,12 @@ public class Main extends PApplet{
 				
 				
 			case "RIGHTSTART":
+				pomax= dragas.get(1).getPosx();
+				pomay= dragas.get(1).getPosy();
 				
+				if(mapa[pomay][pomax+1]==1 || mapa[pomay][pomax+1]==2) {
 				dragas.get(1).derechomuevalo();
-				
+				}
 				break;
 			
 			case "RIGHTSTOP":
@@ -277,7 +339,13 @@ public class Main extends PApplet{
 				
 				break;
 			case "CATCHIT":
+				pomax= dragas.get(1).getPosx();
+				pomay= dragas.get(1).getPosy();
 				
+				if(mapa[pomay][pomax+1]==2) {
+					
+					
+				}
 			
 				
 				break;

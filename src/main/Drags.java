@@ -10,14 +10,17 @@ public abstract class Drags {
 	private int posx,posy;
 	private PApplet app;
 	private boolean moviendoarriba=false,moviendoabajo=false,moviendoderecho=false,moviendoizquierdo=false;
+	private float posxx,posyy;
 
-	public Drags(PImage imagendrag,String accion,int posx,int posy, PApplet app){
+	public Drags(PImage imagendrag,String accion,int posx,int posy,float posxx,float posyy, PApplet app){
 		
 		this.imagendrag=imagendrag;
 		this.accion=accion;
 		this.posx=posx;
 		this.posy=posy;
 		this.app=app;
+		this.posxx=posxx;
+		this.posyy=posyy;
 		
 	}
 
@@ -34,24 +37,30 @@ public abstract class Drags {
 		
 		if(moviendoarriba) {
 			
-			this.posy-=2;
+			this.posyy-=35.29;
 			
 			
 		}else if (moviendoabajo) {
 			
-			this.posy+=2;
+			this.posyy+=35.29;
 			
 		}else if (moviendoderecho) {
 			
 			
-			this.posx+=2;
+			this.posxx+=35.29;
 			
 		}else if (moviendoizquierdo) {
 			
-			this.posx-=2;
+			this.posxx-=35.29;
 			
 			
 		}
+		
+	}
+	
+	public void pintarimagen() {
+		
+		app.image(imagendrag,posxx,posyy);
 		
 	}
 	
@@ -159,6 +168,30 @@ public abstract class Drags {
 		
 		moviendoizquierdo=false;
 		
+	}
+
+
+
+	public float getPosyy() {
+		return posyy;
+	}
+
+
+
+	public void setPosyy(float posyy) {
+		this.posyy = posyy;
+	}
+
+
+
+	public float getPosxx() {
+		return posxx;
+	}
+
+
+
+	public void setPosxx(float posxx) {
+		this.posxx = posxx;
 	}
 
 
