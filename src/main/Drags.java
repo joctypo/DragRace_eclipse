@@ -37,20 +37,25 @@ public abstract class Drags {
 		
 		if(moviendoarriba) {
 			
+			this.posy-=1;
 			this.posyy-=35.29;
+			
 			
 			
 		}else if (moviendoabajo) {
 			
+			this.posy+=1;
 			this.posyy+=35.29;
+			
 			
 		}else if (moviendoderecho) {
 			
-			
+			this.posx+=1;
 			this.posxx+=35.29;
 			
 		}else if (moviendoizquierdo) {
 			
+			this.posx-=1;
 			this.posxx-=35.29;
 			
 			

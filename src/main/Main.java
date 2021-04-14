@@ -18,31 +18,33 @@ public class Main extends PApplet{
 	PImage doraropa,rosaropa,dorapelu,rosapelu,doramake,rosamake;
 	private int pomay,pomax;
 	private int posX = 70, posY=140;
+	//Estos contadores son para verificar si ya cogió todos los objetos
+	private int contadordora=0,contadorrosa=0;
 	
 	
 	//Matriz mapa 20*34
 	private int mapa [][] = {
-			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},//1
-			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},//2
+			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},//1 
+			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},//2 
 			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},//3
 			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},//4
 			{0,0 ,1,1,1,1,1,0,1,1,1, 0,0,0,0,0,0,0,0,0,0,0,0 ,1,1,1,1,1,0,1,1,1 ,0,0},//5
 			{0,0 ,1,0,1,0,1,0,1,0,1 ,0,0,0,0,0,0,0,0,0,0,0,0 ,1,0,1,0,1,0,1,0,1 ,0,0},//6
 			{0,0 ,1,0,1,0,1,0,1,0,1 ,0,0,0,0,0,0,0,0,0,0,0,0 ,1,0,1,0,1,0,1,0,1 ,0,0},//7
 			{0,0 ,1,0,1,0,1,0,1,0,1 ,0,0,0,0,0,0,0,0,0,0,0,0 ,1,0,1,0,1,0,1,0,1 ,0,0},//8
-			{0,0 ,1,0,1,0,1,0,1,0,2 ,0,0,0,0,0,0,0,0,0,0,0,0 ,1,0,1,0,1,0,1,0,2 ,0,0},//9
+			{0,0 ,1,0,1,0,1,0,1,0,4 ,0,0,0,0,0,0,0,0,0,0,0,0 ,1,0,1,0,1,0,1,0,4 ,0,0},//9
 			{0,0 ,0,0,1,0,1,0,1,0,0 ,0,0,0,0,0,0,0,0,0,0,0,0 ,0,0,1,0,1,0,1,0,0 ,0,0},//10
 			{0,0 ,1,0,1,0,1,0,1,0,1 ,0,0,0,0,0,0,0,0,0,0,0,0 ,1,0,1,0,1,0,1,0,1 ,0,0},//11
-			{0,0 ,2,0,1,0,1,0,1,0,1 ,0,0,0,0,0,0,0,0,0,0,0,0 ,2,0,1,0,1,0,1,0,1 ,0,0},//12
+			{0,0 ,3,0,1,0,1,0,1,0,1 ,0,0,0,0,0,0,0,0,0,0,0,0 ,3,0,1,0,1,0,1,0,1 ,0,0},//12
 			{0,0 ,1,1,1,0,1,1,1,0,1 ,0,0,0,0,0,0,0,0,0,0,0,0 ,1,1,1,0,1,1,1,0,1 ,0,0},//13
 			{0,0 ,0,0,0,0,1,0,0,0,1 ,0,0,0,0,0,0,0,0,0,0,0,0 ,0,0,0,0,1,0,0,0,1 ,0,0},//14
 			{0,0 ,1,1,1,1,1,1,1,1,1 ,0,0,0,0,0,0,0,0,0,0,0,0 ,1,1,1,1,1,1,1,1,1 ,0,0},//15
 			{0,0 ,1,0,1,0,1,0,0,0,1 ,0,0,0,0,0,0,0,0,0,0,0,0 ,1,0,1,0,1,0,0,0,1 ,0,0},//16
 			{0,0 ,0,0,1,0,1,0,2,0,1 ,0,0,0,0,0,0,0,0,0,0,0,0 ,0,0,1,0,1,0,2,0,1 ,0,0},//17
-			{0,0 ,4,1,1,0,1,0,1,1,1 ,0,0,0,0,0,0,0,0,0,0,0,0 ,4,1,1,0,1,0,1,1,1 ,0,0},//18
+			{0,0 ,1,1,1,0,1,0,1,1,1 ,0,0,0,0,0,0,0,0,0,0,0,0 ,1,1,1,0,1,0,1,1,1 ,0,0},//18
 			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},//19
 			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},//20
-			
+			// 2 maquillaje 3 peluca 4 ropa
 	};
 	
 	
@@ -90,8 +92,8 @@ public class Main extends PApplet{
     	rosapelu = loadImage("imagenes/pelucarosa.png");
     	ropa1 = loadImage("imagenes/doritaropa.png");
     	peluca1 = loadImage("imagenes/doritapelu.png");
-    	makeup1 = loadImage("imagenes/doritaropa.png");
-    	ropa2 = loadImage("imagenes/rositaropa.png");
+    	makeup1 = loadImage("imagenes/doritamake.png");
+    	ropa2 = loadImage("imagenes/rositapelu.png");
     	peluca2 = loadImage("imagenes/rositaropa.png");
     	makeup2 = loadImage("imagenes/rositamake.png");
     	
@@ -134,7 +136,12 @@ public class Main extends PApplet{
     		
     		// Pantalla de juego 
     		image(imgMapa,0,0);
-    		image(ropa1,0,0);
+    		
+    		//Aqui toca validar las posiciones de cada objeto si aun estan para pintarlo 
+    		//if(mapa[15][17]==2){
+    			image(ropa1,0,0);
+    		//}else {que pinte la caracteristica grande en el centro}
+    		
     		image(peluca1,0,0);
     		image(makeup1,0,0);
     		image(ropa2,0,0);
@@ -142,14 +149,27 @@ public class Main extends PApplet{
     		image(makeup2,0,0);
     		dragas.get(0).pintarimagen();
     		dragas.get(1).pintarimagen();
+    		validador();
     		//ellipse(posX+15,posY+15,15,15);
     		fill(0);
 			textSize(10);
 			text("X: " + mouseX + " Y " + mouseY, mouseX, mouseY);
     		
     		break;
+    		
+    		
+    
+    	case 4:
     	
+    		//cuando se de cuenta que alguien gano, pintar la muñeca del ganador 
+    		
+    	break;
     	
+     	case 5:
+        	
+    		//cuando se de cuenta que alguien gano, pintar la muñeca del ganador 
+    		
+    	break;
     	
     	}
     	
@@ -180,7 +200,17 @@ public class Main extends PApplet{
     	
     }
     
-    
+    public void validador() {
+    	
+    	if(contadordora==3) {
+    		
+    		pantalla=4;
+    	}else if (contadorrosa==3) {
+    		
+    		pantalla =5;
+    	}
+    	
+    }
     
 	public void acciono(Acciones acc, Object obj) {
 		
@@ -260,8 +290,11 @@ public class Main extends PApplet{
 				pomax= dragas.get(0).getPosx();
 				pomay= dragas.get(0).getPosy();
 				
-				if(mapa[pomay][pomax+1]==2) {
+				if(mapa[pomay][pomax]==2 || mapa[pomay][pomax]==3 || mapa[pomay][pomax]== 4) {
 					
+				
+						mapa[pomay][pomax]=1;
+						contadordora+=1;
 					
 				}
 				break;
@@ -342,9 +375,10 @@ public class Main extends PApplet{
 				pomax= dragas.get(1).getPosx();
 				pomay= dragas.get(1).getPosy();
 				
-				if(mapa[pomay][pomax+1]==2) {
+				if(mapa[pomay][pomax]==2 || mapa[pomay][pomax]==3 || mapa[pomay][pomax]== 4) {
 					
-					
+					mapa[pomay][pomax]=1;
+					contadorrosa+=1;
 				}
 			
 				
