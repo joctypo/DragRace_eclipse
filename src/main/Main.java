@@ -100,8 +100,8 @@ public class Main extends PApplet{
     	//Mientras inicia en 3 para poder empezar en el juego, toca cambiarlo a 1
     	pantalla=1;
     	
-    	dragas.add(new DragDebora(dora, "nada ",17, 2, 70,595, this));
-    	dragas.add(new DragRosa(rosa, "nada ",17, 23,810,595, this));
+    	dragas.add(new DragDebora(dora, "nada ",2, 17, 70,595, this));
+    	dragas.add(new DragRosa(rosa, "nada ",23, 17,810,595, this));
     
 
     }
@@ -146,11 +146,12 @@ public class Main extends PApplet{
     		image(makeup1,0,0);
     		image(ropa2,0,0);
     		image(peluca2,0,0);
-    		image(makeup2,0,0);
+    		image(makeup2,0,0); 
     		dragas.get(0).pintarimagen();
+    		
     		dragas.get(1).pintarimagen();
     		validador();
-    		//ellipse(posX+15,posY+15,15,15);
+    		//ellipse(dragas.get(0).getPosxx(),dragas.get(0).getPosyy(),15,15);
     		fill(0);
 			textSize(10);
 			text("X: " + mouseX + " Y " + mouseY, mouseX, mouseY);
@@ -212,13 +213,20 @@ public class Main extends PApplet{
     	
     }
     
+	public int[][] getMapa() {
+		return mapa;
+	}
+
+	/*public void setMapa(int matrizMapa[][]) {
+		this.matrizMapa = matrizMapa;
+	}*/
 	public void acciono(Acciones acc, Object obj) {
 		
 		//Verificar que clase es o que TCP mando la info 
 		if(obj instanceof TCPConnection1) {
 			
 			//imprimo en la consola que sucede
-			System.out.println("Jugador 1"+acc.getAccion());
+			System.out.println("Jugador 1 osquitar"+acc.getAccion());
 			
 			//Dice que acción activar 
 			switch(acc.getAccion()) {
@@ -226,10 +234,11 @@ public class Main extends PApplet{
 			case "UPSTART":
 				pomax= dragas.get(0).getPosx();
 				pomay= dragas.get(0).getPosy();
+				// corregir y meter 3 y 4 
 				
-				if(mapa[pomay-1][pomax]==1 || mapa[pomay-1][pomax]==2) {
+				System.out.println("si entro");
 				dragas.get(0).arribamuevalo();
-				}
+				
 				break;
 			
 			case "UPSTOP":
@@ -242,9 +251,9 @@ public class Main extends PApplet{
 				pomax= dragas.get(0).getPosx();
 				pomay= dragas.get(0).getPosy();
 				
-				if(mapa[pomay+1][pomax]==1 || mapa[pomay+1][pomax]==2) {
+				
 				dragas.get(0).abajomuevalo();
-				}
+				
 				break;
 				
 			
@@ -259,9 +268,10 @@ public class Main extends PApplet{
 				pomax= dragas.get(0).getPosx();
 				pomay= dragas.get(0).getPosy();
 				
-				if(mapa[pomay][pomax+1]==1 || mapa[pomay][pomax+1]==2) {
+				
+					
 				dragas.get(0).izquierdomuevalo();
-				}
+				
 				break;
 			
 			case "LEFTSTOP":
@@ -275,9 +285,10 @@ public class Main extends PApplet{
 				pomax= dragas.get(0).getPosx();
 				pomay= dragas.get(0).getPosy();
 				
-				if(mapa[pomay][pomax+1]==1 || mapa[pomay][pomax+1]==2) {
+				
+					System.out.println(mapa[pomay][pomax+1]);
 				dragas.get(0).derechomuevalo();
-				}
+				
 				break;
 			
 			case "RIGHTSTOP":
