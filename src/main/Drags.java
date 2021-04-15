@@ -24,8 +24,8 @@ public abstract class Drags {
 			{ 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0 }, // 8
 			{ 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 4, 0, 0 }, // 9
 			{ 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0 }, // 10
-			{ 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0 }, // 11
-			{ 0, 0, 3, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0 }, // 12
+			{ 0, 0, 3, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0 }, // 11
+			{ 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0 }, // 12
 			{ 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 0 }, // 13
 			{ 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0 }, // 14
 			{ 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0 }, // 15
@@ -68,7 +68,7 @@ public abstract class Drags {
 		if (moviendoarriba) {
 
 			if (mapita[this.posy - 1][this.posx] == 1 || mapita[this.posy - 1][this.posx] == 2
-					|| mapita[this.posy][this.posx - 1] == 3 || mapita[this.posy][this.posx - 1] == 4) {
+					|| mapita[this.posy - 1][this.posx] == 3 || mapita[this.posy - 1][this.posx] == 4) {
 
 				this.posy -= 1;
 				this.posyy = posyy - valor;
@@ -77,7 +77,7 @@ public abstract class Drags {
 
 		} else if (moviendoabajo) {
 			if (mapita[this.posy + 1][this.posx] == 1 || mapita[this.posy + 1][this.posx] == 2
-					|| mapita[this.posy][this.posx - 1] == 3 || mapita[this.posy][this.posx - 1] == 4) {
+					|| mapita[this.posy + 1][this.posx] == 3 || mapita[this.posy + 1][this.posx] == 4) {
 
 				this.posy += 1;
 				this.posyy += 35.29;
@@ -85,7 +85,7 @@ public abstract class Drags {
 
 		} else if (moviendoderecho) {
 			if (mapita[this.posy][this.posx + 1] == 1 || mapita[this.posy][this.posx + 1] == 2
-					|| mapita[this.posy][this.posx - 1] == 3 || mapita[this.posy][this.posx - 1] == 4) {
+					|| mapita[this.posy][this.posx + 1] == 3 || mapita[this.posy][this.posx + 1] == 4) {
 
 				this.posx += 1;
 				this.posxx += 35.29;
