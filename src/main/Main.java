@@ -138,9 +138,11 @@ public class Main extends PApplet{
     		image(imgMapa,0,0);
     		
     		//Aqui toca validar las posiciones de cada objeto si aun estan para pintarlo 
-    		//if(mapa[15][17]==2){
+    		if(mapa[8][10]==4){
     			image(ropa1,0,0);
-    		//}else {que pinte la caracteristica grande en el centro}
+    		}else {
+    			image(doraropa,0,0);
+    		}
     		
     		image(peluca1,0,0);
     		image(makeup1,0,0);
@@ -238,13 +240,14 @@ public class Main extends PApplet{
 				
 				System.out.println("si entro");
 				dragas.get(0).arribamuevalo();
-				
+				dragas.get(0).mover();
+				dragas.get(0).setFrameMovimiento(frameCount);
 				break;
 			
 			case "UPSTOP":
 				
 				dragas.get(0).arribaparelo();
-				
+
 				break;
 				
 			case "DOWNSTART":
@@ -253,14 +256,17 @@ public class Main extends PApplet{
 				
 				
 				dragas.get(0).abajomuevalo();
-				
+				dragas.get(0).mover();
+				dragas.get(0).setFrameMovimiento(frameCount);
+
+
 				break;
 				
 			
 			case "DOWNSTOP":
 				
 				dragas.get(0).abajoparelo();
-				
+
 				break;
 			
 				
@@ -271,7 +277,9 @@ public class Main extends PApplet{
 				
 					
 				dragas.get(0).izquierdomuevalo();
-				
+				dragas.get(0).mover();
+				dragas.get(0).setFrameMovimiento(frameCount);
+
 				break;
 			
 			case "LEFTSTOP":
@@ -288,7 +296,9 @@ public class Main extends PApplet{
 				
 					System.out.println(mapa[pomay][pomax+1]);
 				dragas.get(0).derechomuevalo();
-				
+				dragas.get(0).mover();
+				dragas.get(0).setFrameMovimiento(frameCount);
+
 				break;
 			
 			case "RIGHTSTOP":
@@ -323,32 +333,37 @@ public class Main extends PApplet{
 			case "UPSTART":
 				pomax= dragas.get(1).getPosx();
 				pomay= dragas.get(1).getPosy();
+				// corregir y meter 3 y 4 
 				
-				if(mapa[pomay-1][pomax]==1 || mapa[pomay-1][pomax]==2) {
+				System.out.println("si entro");
 				dragas.get(1).arribamuevalo();
-				}
+				dragas.get(1).mover();
+				dragas.get(1).setFrameMovimiento(frameCount);
 				break;
 			
 			case "UPSTOP":
 				
 				dragas.get(1).arribaparelo();
-				
+
 				break;
 				
 			case "DOWNSTART":
 				pomax= dragas.get(1).getPosx();
 				pomay= dragas.get(1).getPosy();
 				
-				if(mapa[pomay+1][pomax]==1 || mapa[pomay+1][pomax]==2) {
+				
 				dragas.get(1).abajomuevalo();
-				}
+				dragas.get(1).mover();
+				dragas.get(1).setFrameMovimiento(frameCount);
+
+
 				break;
 				
 			
 			case "DOWNSTOP":
 				
 				dragas.get(1).abajoparelo();
-				
+
 				break;
 			
 				
@@ -356,9 +371,12 @@ public class Main extends PApplet{
 				pomax= dragas.get(1).getPosx();
 				pomay= dragas.get(1).getPosy();
 				
-				if(mapa[pomay][pomax+1]==1 || mapa[pomay][pomax+1]==2) {
+				
+					
 				dragas.get(1).izquierdomuevalo();
-				}
+				dragas.get(1).mover();
+				dragas.get(1).setFrameMovimiento(frameCount);
+
 				break;
 			
 			case "LEFTSTOP":
@@ -372,9 +390,12 @@ public class Main extends PApplet{
 				pomax= dragas.get(1).getPosx();
 				pomay= dragas.get(1).getPosy();
 				
-				if(mapa[pomay][pomax+1]==1 || mapa[pomay][pomax+1]==2) {
+				
+					System.out.println(mapa[pomay][pomax+1]);
 				dragas.get(1).derechomuevalo();
-				}
+				dragas.get(1).mover();
+				dragas.get(1).setFrameMovimiento(frameCount);
+
 				break;
 			
 			case "RIGHTSTOP":
@@ -383,13 +404,16 @@ public class Main extends PApplet{
 				
 				break;
 			case "CATCHIT":
+				
 				pomax= dragas.get(1).getPosx();
 				pomay= dragas.get(1).getPosy();
 				
 				if(mapa[pomay][pomax]==2 || mapa[pomay][pomax]==3 || mapa[pomay][pomax]== 4) {
 					
-					mapa[pomay][pomax]=1;
-					contadorrosa+=1;
+				
+						mapa[pomay][pomax]=1;
+						contadordora+=1;
+					
 				}
 			
 				
