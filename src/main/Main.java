@@ -18,6 +18,7 @@ public class Main extends PApplet {
 	PImage doraropa, rosaropa, dorapelu, rosapelu, doramake, rosamake;
 	private int pomay, pomax;
 	private int posX = 70, posY = 140;
+	
 	// Estos contadores son para verificar si ya cogió todos los objetos
 	private int contadordora = 0, contadorrosa = 0;
 
@@ -174,7 +175,7 @@ public class Main extends PApplet {
 
 		case 4:
 			image(ganaDora, 0, 0);
-
+			//fill(0); textSize(10); text("X: " + mouseX + " Y " + mouseY, mouseX, mouseY);
 			break;
 
 		case 5:
@@ -202,7 +203,18 @@ public class Main extends PApplet {
 				pantalla = 6;
 			}
 			break;
-
+		case 4:
+			if (mouseX > 700 && mouseX < 939 && mouseY > 520 && mouseY < 592) {
+				reiniciar();
+				pantalla = 1;
+			}
+			break;
+		case 5:
+			if (mouseX > 700 && mouseX < 939 && mouseY > 520 && mouseY < 592) {
+				reiniciar();
+				pantalla = 1;
+			}
+			break;
 		case 6:
 			if (mouseX > 480 && mouseX < 645 && mouseY > 574 && mouseY < 648) {
 				pantalla = 3;
@@ -211,10 +223,7 @@ public class Main extends PApplet {
 		}
 	}
 
-	public void keyPressed() {
-
-	}
-
+	
 	public void validador() {
 
 		if (contadordora == 3) {
@@ -410,5 +419,33 @@ public class Main extends PApplet {
 
 			}
 		}
+	}
+	
+	public void reiniciar() {
+		
+		//Reinicio de valores en la matriz
+		mapa[8][10] = 4;
+		mapa[10][2] = 3;
+		mapa[16][8] = 2;
+		mapa[8][31] = 4;
+		mapa[16][29] = 2;
+		mapa[10][23] = 3;
+		
+		//Reinicio contaores
+		contadordora = 0;
+		contadorrosa =0;
+	
+		//Reinicio posicion jugador inicial
+		dragas.get(0).setPosx(2);
+		dragas.get(0).setPosy(17);
+		dragas.get(0).setPosxx(70);
+		dragas.get(0).setPosyy(595);
+
+		dragas.get(1).setPosx(23);
+		dragas.get(1).setPosy(17);
+		dragas.get(1).setPosxx(810);
+		dragas.get(1).setPosyy(595);
+
+		
 	}
 }
